@@ -21,13 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'gkx+01uy*y2kn)y*8b1j1_8rmg#$h$0!!!^27l9l-x*#2p@756'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'gkx+01uy*y2kn)y*8b1j1_8rmg#$h$0!!!^27l9l-x*#2p@756')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'gkx+01uy*y2kn)y*8b1j1_8rmg#$h$0!!!^27l9l-x*#2p@756')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+DEBUG = os.getenv('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'heimspiel.pythonanywhere.com',
 ]
 
