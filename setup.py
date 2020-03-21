@@ -6,7 +6,8 @@ setup(
     packages=find_packages(),
 
     install_requires=[
-        "Django>=3.0.4"
+        "Django>=3.0.4",
+        "djangorestframework>=3.11.0",
     ],
 
     author="OpenTechSchool Leipzig",
