@@ -27,7 +27,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'gkx+01uy*y2kn)y*8b1j1_8rmg#$h$
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'heimspiel.pythonanywhere.com',
+]
 
 
 # Application definition
