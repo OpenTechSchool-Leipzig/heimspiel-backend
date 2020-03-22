@@ -1,0 +1,52 @@
+[
+{
+  "model": "heimspiel_core.playerattribute",
+  "pk": 1,
+  "fields": {
+    "name": "Haven of tranquility"
+  }
+},
+{
+  "model": "heimspiel_core.playerattribute",
+  "pk": 2,
+  "fields": {
+    "name": "Need for movement"
+  }
+},
+{
+  "model": "heimspiel_core.questcategory",
+  "pk": "health",
+  "fields": {
+    "title": "Health"
+  }
+},
+{
+  "model": "heimspiel_core.questcategory",
+  "pk": "relationships",
+  "fields": {
+    "title": "Relationships"
+  }
+},
+{
+  "model": "heimspiel_core.quest",
+  "pk": 1,
+  "fields": {
+    "title": "Call a friend",
+    "category": "relationships",
+    "text": "",
+    "flavor_text": "",
+    "score": 1
+  }
+},
+{
+  "model": "heimspiel_core.quest",
+  "pk": 2,
+  "fields": {
+    "title": "Run!",
+    "category": "health",
+    "text": "Go running for 20 minutes (alone).",
+    "flavor_text": "",
+    "score": 3
+  }
+}
+]
