@@ -1,0 +1,20 @@
+import uuid
+
+from rest_framework import serializers
+from rest_framework.authtoken.models import Token
+
+from .models import User
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['url', 'id', 'name']
+
+    def create(self, validated_data):
+        validated_data['id'] = uuid.uuid4()
+        validated_data['username'] = validated_data['id']
+        validated_data['password'] = ''
+        user = User.objects.create(**validated_data)
+        Token.objects.create(user=user)
+        return user
