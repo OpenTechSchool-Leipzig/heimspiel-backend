@@ -8,6 +8,7 @@ setup(
     install_requires=[
         "Django>=3.0.4",
         "djangorestframework>=3.11.0",
+        "django-filer>=1.7.0",
     ],
 
     author="OpenTechSchool Leipzig",

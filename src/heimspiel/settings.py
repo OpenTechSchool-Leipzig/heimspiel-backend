@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'easy_thumbnails',
+    'filer',
+    'mptt',
     'heimspiel',
     'heimspiel_auth',
     'heimspiel_core',
@@ -132,6 +135,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/heimspiel/heimspiel-backend/src/static/'
+
+THUMBNAIL_HIGH_RESOLUTION = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
