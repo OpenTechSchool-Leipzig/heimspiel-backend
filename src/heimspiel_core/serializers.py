@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Player, PlayerAttribute, Quest, QuestCategory
+from .models import Badge, Player, PlayerAttribute, Quest, QuestCategory
 
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
@@ -39,5 +39,5 @@ class QuestCategorySerializer(serializers.HyperlinkedModelSerializer):
 
 class BadgeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = QuestCategory
+        model = Badge
         fields = ['url', 'name']
