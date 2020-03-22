@@ -26,7 +26,6 @@ class QuestSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_image(self, obj):
         if obj.image is not None:
-            import pdb; pdb.set_trace()
             return obj.image.url
         else:
             return None
