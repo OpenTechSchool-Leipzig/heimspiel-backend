@@ -1,4 +1,5 @@
 from django.db import models
+from filer.fields.file import FilerFileField
 from filer.fields.image import FilerImageField
 
 from heimspiel_auth.models import User
@@ -32,7 +33,7 @@ class Player(models.Model):
 class QuestCategory(models.Model):
     id = models.CharField(primary_key=True, max_length=16)
     title = models.CharField(max_length=64)
-    # TODO: image
+    image = FilerImageField(on_delete=models.CASCADE, related_name='+')
 
     def __str__(self):
         return self.title
@@ -71,6 +72,8 @@ class QuestReport(models.Model):
 
 class Badge(models.Model):
     name = models.CharField(max_length=64)
+    # FilerFileField instead of FilerImageField because we want to use SVGs
+    image = FilerFileField(on_delete=models.CASCADE)
     # TODO: constraints
 
     def __str__(self):

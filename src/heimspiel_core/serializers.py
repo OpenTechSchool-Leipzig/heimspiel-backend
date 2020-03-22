@@ -32,12 +32,28 @@ class QuestSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class QuestCategorySerializer(serializers.HyperlinkedModelSerializer):
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = QuestCategory
-        fields = ['url', 'title']
+        fields = ['url', 'title', 'image']
+
+    def get_image(self, obj):
+        if obj.image is not None:
+            return obj.image.url
+        else:
+            return None
 
 
 class BadgeSerializer(serializers.HyperlinkedModelSerializer):
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = Badge
-        fields = ['url', 'name']
+        fields = ['url', 'name', 'image']
+
+    def get_image(self, obj):
+        if obj.image is not None:
+            return obj.image.url
+        else:
+            return None
