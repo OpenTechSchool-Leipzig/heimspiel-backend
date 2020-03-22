@@ -62,7 +62,17 @@ class StoryTestCase(TestCase):
         }, quests['results'][0])
 
         # After a hard day of doing chores, the group returns and submits a
-        # score report to find out which badges they've earned:
+        # score report to find out which badges they've earned. In order to do
+        # that, they need to enter their score in each quest category. The
+        # quest categories can be queried like this:
+        categories = self.get('/questcategories/')
+        self.assertEqual(6, categories['count'])
+        self.assertEqual({
+            'url': 'http://testserver/questcategories/activity/',
+            'title': 'Beschäftigung',
+            'image': 'http://testserver/media/filer_public/c3/1f/c31f700d-fb3d-45d3-b293-ca35ca324b5f/activity.jpg',
+        }, categories['results'][0])
+
         result = self.post('/scorereports/', {
             'user': user['url'],
             'date': '2020-03-22T17:00:00Z',
@@ -70,14 +80,17 @@ class StoryTestCase(TestCase):
                 {
                     'player': alice['url'],
                     'category_scores': [
-                        { 'category': 'foo', 'score': 42 },
-                        { 'category': 'bar', 'score': 2 },
+                        { 'category': categories['results'][0]['url'],
+                          'score': 42 },
+                        { 'category': categories['results'][3]['url'],
+                          'score': 2 },
                     ]
                 },
                 {
                     'player': bob['url'],
                     'category_scores': [
-                        { 'category': 'bar', 'score': 10 },
+                        { 'category': categories['results'][0]['url'],
+                          'score': 10 },
                     ]
                 },
             ],
