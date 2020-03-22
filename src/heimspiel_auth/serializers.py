@@ -7,12 +7,9 @@ from .models import User
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    id = serializers.UUIDField(read_only=True)
-    name = serializers.CharField(max_length=64)
-
     class Meta:
         model = User
-        fields = ['id', 'name']
+        fields = ['url', 'id', 'name']
 
     def create(self, validated_data):
         validated_data['id'] = uuid.uuid4()
