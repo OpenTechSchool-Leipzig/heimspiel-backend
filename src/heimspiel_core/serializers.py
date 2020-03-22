@@ -3,6 +3,16 @@ from rest_framework import serializers
 from .models import Badge, Player, PlayerAttribute, Quest, QuestCategory
 
 
+class GetImageMixin:
+
+    def get_image(self, obj):
+        if obj.image is not None:
+            request = self.context['request']
+            return request.build_absolute_uri(obj.image.url)
+        else:
+            return None
+
+
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Player
@@ -16,7 +26,7 @@ class PlayerAttributeSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 
 
-class QuestSerializer(serializers.HyperlinkedModelSerializer):
+class QuestSerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
     image = serializers.SerializerMethodField()
 
     class Meta:
@@ -24,36 +34,19 @@ class QuestSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'title', 'category', 'text', 'flavor_text', 'score',
                   'image']
 
-    def get_image(self, obj):
-        if obj.image is not None:
-            return obj.image.url
-        else:
-            return None
 
-
-class QuestCategorySerializer(serializers.HyperlinkedModelSerializer):
+class QuestCategorySerializer(serializers.HyperlinkedModelSerializer,
+                              GetImageMixin):
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = QuestCategory
         fields = ['url', 'title', 'image']
 
-    def get_image(self, obj):
-        if obj.image is not None:
-            return obj.image.url
-        else:
-            return None
 
-
-class BadgeSerializer(serializers.HyperlinkedModelSerializer):
+class BadgeSerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = Badge
         fields = ['url', 'name', 'image']
-
-    def get_image(self, obj):
-        if obj.image is not None:
-            return obj.image.url
-        else:
-            return None
