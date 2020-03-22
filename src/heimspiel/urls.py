@@ -15,11 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework import routers
 
-from heimspiel_auth import views
+from heimspiel_auth import views as auth_views
+from heimspiel_core import views
+
+router = routers.DefaultRouter()
+router.register(r'badges', views.QuestCategoryViewSet)
+router.register(r'playerattributes', views.PlayerAttributeViewSet)
+router.register(r'players', views.PlayerViewSet)
+router.register(r'questcategories', views.QuestCategoryViewSet)
+router.register(r'quests', views.QuestViewSet)
+router.register(r'users', auth_views.UserViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('users/', views.UserViewSet.as_view(actions={'post': 'create'})),
-    path('heimspiel/', include('heimspiel_core.urls')),
 ]
