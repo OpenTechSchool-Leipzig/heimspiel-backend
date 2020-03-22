@@ -1,5 +1,7 @@
 from django.db import models
 
+from heimspiel_auth.models import User
+
 
 class PlayerAttribute(models.Model):
     name = models.CharField(max_length=128)
@@ -12,6 +14,7 @@ class PlayerAttribute(models.Model):
 
 
 class Player(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
     score = models.PositiveIntegerField(default=0)
     background_story = models.TextField(blank=True)
@@ -40,8 +43,8 @@ class QuestCategory(models.Model):
 class Quest(models.Model):
     title = models.CharField(max_length=128)
     category = models.ForeignKey(QuestCategory, on_delete=models.CASCADE)
-    text = models.TextField()
-    flavor_text = models.TextField()
+    text = models.TextField(blank=True)
+    flavor_text = models.TextField(blank=True)
     score = models.IntegerField()
     # TODO: image
 
