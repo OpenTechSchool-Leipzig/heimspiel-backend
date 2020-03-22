@@ -1,52 +1,555 @@
 [
 {
+  "model": "heimspiel_auth.user",
+  "pk": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sample",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-03-22T16:10:51.886Z",
+    "name": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "heimspiel_core.playerattribute",
   "pk": 1,
   "fields": {
-    "name": "Haven of tranquility"
+    "name": "Sportskanone"
   }
 },
 {
   "model": "heimspiel_core.playerattribute",
   "pk": 2,
   "fields": {
-    "name": "Need for movement"
+    "name": "Witzbold"
+  }
+},
+{
+  "model": "heimspiel_core.playerattribute",
+  "pk": 3,
+  "fields": {
+    "name": "Ruhepol"
+  }
+},
+{
+  "model": "heimspiel_core.playerattribute",
+  "pk": 4,
+  "fields": {
+    "name": "Sternekoch"
+  }
+},
+{
+  "model": "heimspiel_core.questcategory",
+  "pk": "activity",
+  "fields": {
+    "title": "Besch\u00e4ftigung",
+    "image": 2
+  }
+},
+{
+  "model": "heimspiel_core.questcategory",
+  "pk": "chores",
+  "fields": {
+    "title": "Hausarbeit",
+    "image": 4
   }
 },
 {
   "model": "heimspiel_core.questcategory",
   "pk": "health",
   "fields": {
-    "title": "Health"
+    "title": "Gesundheit",
+    "image": 6
   }
 },
 {
   "model": "heimspiel_core.questcategory",
-  "pk": "relationships",
+  "pk": "living-together",
   "fields": {
-    "title": "Relationships"
+    "title": "Zusammenleben",
+    "image": 8
+  }
+},
+{
+  "model": "heimspiel_core.questcategory",
+  "pk": "productivity",
+  "fields": {
+    "title": "Produktivit\u00e4t",
+    "image": 10
+  }
+},
+{
+  "model": "heimspiel_core.questcategory",
+  "pk": "solidarity",
+  "fields": {
+    "title": "Zusammenhalt",
+    "image": 12
   }
 },
 {
   "model": "heimspiel_core.quest",
   "pk": 1,
   "fields": {
-    "title": "Call a friend",
-    "category": "relationships",
-    "text": "",
+    "title": "Es war der G\u00e4rtner",
+    "category": "chores",
+    "text": "Gie\u00dfe heimlich alle eure Pflanzen. Gib dich erst als der geheime G\u00e4rtner zu erkennen,wenn es dir unendeckt gelungen ist.",
     "flavor_text": "",
-    "score": 1
+    "score": 3,
+    "image": 13
   }
 },
 {
   "model": "heimspiel_core.quest",
   "pk": 2,
   "fields": {
-    "title": "Run!",
+    "title": "Yoga Guru",
     "category": "health",
-    "text": "Go running for 20 minutes (alone).",
+    "text": "Du bist die Sportskanone und schl\u00e4fst in deiner Yoga Legging? Coache jemanden aus deinem Team f\u00fcr ein Yoga Training,geht auch via Skype. F\u00fcr jede/n den/die du begeistern kannst, mitzumachen,bekommt dein Team die Punktzahl auf der Karte.",
     "flavor_text": "",
-    "score": 3
+    "score": 5,
+    "image": 14
+  }
+},
+{
+  "model": "heimspiel_core.badge",
+  "pk": 1,
+  "fields": {
+    "name": "Besch\u00e4ftigung",
+    "image": 1
+  }
+},
+{
+  "model": "heimspiel_core.badge",
+  "pk": 2,
+  "fields": {
+    "name": "Hausarbeit",
+    "image": 3
+  }
+},
+{
+  "model": "heimspiel_core.badge",
+  "pk": 3,
+  "fields": {
+    "name": "Gesundheit",
+    "image": 5
+  }
+},
+{
+  "model": "heimspiel_core.badge",
+  "pk": 4,
+  "fields": {
+    "name": "Zusammenleben",
+    "image": 7
+  }
+},
+{
+  "model": "heimspiel_core.badge",
+  "pk": 5,
+  "fields": {
+    "name": "Produktivit\u00e4t",
+    "image": 9
+  }
+},
+{
+  "model": "heimspiel_core.badge",
+  "pk": 6,
+  "fields": {
+    "name": "Zusammenhalt",
+    "image": 11
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 1,
+  "fields": {
+    "polymorphic_ctype": 12,
+    "folder": null,
+    "file": "filer_public/d8/d5/d8d59148-951c-4dd6-a672-219225021a16/activity.svg",
+    "_file_size": 5694,
+    "sha1": "faf0bde262ea864d988ddcebc633c7bd3a21e8ec",
+    "has_all_mandatory_data": false,
+    "original_filename": "activity.svg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.890Z",
+    "modified_at": "2020-03-22T16:10:51.890Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 2,
+  "fields": {
+    "polymorphic_ctype": 15,
+    "folder": null,
+    "file": "filer_public/c3/1f/c31f700d-fb3d-45d3-b293-ca35ca324b5f/activity.jpg",
+    "_file_size": 123173,
+    "sha1": "2f42fa460b8e5b903e9e25a66ba04e3b94b990d3",
+    "has_all_mandatory_data": false,
+    "original_filename": "activity.jpg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.897Z",
+    "modified_at": "2020-03-22T16:10:51.897Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 3,
+  "fields": {
+    "polymorphic_ctype": 12,
+    "folder": null,
+    "file": "filer_public/e5/f3/e5f37629-0e42-4396-9182-6a26d900c1f7/chores.svg",
+    "_file_size": 1042,
+    "sha1": "fdd71ec79be676531c77e29cf73188a269522fd7",
+    "has_all_mandatory_data": false,
+    "original_filename": "chores.svg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.901Z",
+    "modified_at": "2020-03-22T16:10:51.901Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 4,
+  "fields": {
+    "polymorphic_ctype": 15,
+    "folder": null,
+    "file": "filer_public/64/e6/64e6336f-fcd6-491e-98cb-ae56a9af7da3/chores.jpg",
+    "_file_size": 103848,
+    "sha1": "24b33883534b7e9ec530528dd430b74c21d8d1d0",
+    "has_all_mandatory_data": false,
+    "original_filename": "chores.jpg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.903Z",
+    "modified_at": "2020-03-22T16:10:51.903Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 5,
+  "fields": {
+    "polymorphic_ctype": 12,
+    "folder": null,
+    "file": "filer_public/50/bf/50bf3a90-6fd1-45bb-94fd-c0c0c6a529f6/health.svg",
+    "_file_size": 7950,
+    "sha1": "f00ffc05a021201bbde630ea51979d0531c3892f",
+    "has_all_mandatory_data": false,
+    "original_filename": "health.svg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.906Z",
+    "modified_at": "2020-03-22T16:10:51.906Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 6,
+  "fields": {
+    "polymorphic_ctype": 15,
+    "folder": null,
+    "file": "filer_public/2c/3d/2c3d6a74-6b57-4091-91d3-37b4408ade1b/health.jpg",
+    "_file_size": 136909,
+    "sha1": "ec8ed9fcb9db9c799e2181951321180e4bec2c32",
+    "has_all_mandatory_data": false,
+    "original_filename": "health.jpg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.909Z",
+    "modified_at": "2020-03-22T16:10:51.909Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 7,
+  "fields": {
+    "polymorphic_ctype": 12,
+    "folder": null,
+    "file": "filer_public/d9/19/d919c287-1861-4019-b1fb-af3e70a08f89/living-together.svg",
+    "_file_size": 1851,
+    "sha1": "6a18d3e56765af67e895758c29597324d31b12cb",
+    "has_all_mandatory_data": false,
+    "original_filename": "living-together.svg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.911Z",
+    "modified_at": "2020-03-22T16:10:51.911Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 8,
+  "fields": {
+    "polymorphic_ctype": 15,
+    "folder": null,
+    "file": "filer_public/f8/70/f870883c-acf1-421b-b001-3856e4a78c13/living-together.jpg",
+    "_file_size": 102960,
+    "sha1": "81a82c6b63917f1428d8a000e9e07bfa0988364f",
+    "has_all_mandatory_data": false,
+    "original_filename": "living-together.jpg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.914Z",
+    "modified_at": "2020-03-22T16:10:51.914Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 9,
+  "fields": {
+    "polymorphic_ctype": 12,
+    "folder": null,
+    "file": "filer_public/01/12/0112c88e-8224-48a0-968a-e6729df9ec45/productivity.svg",
+    "_file_size": 1409,
+    "sha1": "ec5db1fbf3260b2a1eb23bf9dcfe3e6b00147f8b",
+    "has_all_mandatory_data": false,
+    "original_filename": "productivity.svg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.916Z",
+    "modified_at": "2020-03-22T16:10:51.916Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 10,
+  "fields": {
+    "polymorphic_ctype": 15,
+    "folder": null,
+    "file": "filer_public/14/1c/141cd659-1e2c-4b16-9fc7-9568ba8b40db/productivity.jpg",
+    "_file_size": 118447,
+    "sha1": "9e833f5adf8e2672dedb2934980ace2d20c46ff4",
+    "has_all_mandatory_data": false,
+    "original_filename": "productivity.jpg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.919Z",
+    "modified_at": "2020-03-22T16:10:51.919Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 11,
+  "fields": {
+    "polymorphic_ctype": 12,
+    "folder": null,
+    "file": "filer_public/2c/60/2c60019f-f2ac-4362-b59f-d55989d2b53e/solidarity.svg",
+    "_file_size": 3906,
+    "sha1": "72fbcbdedc0b67ccd2f6a378e446191d139df71d",
+    "has_all_mandatory_data": false,
+    "original_filename": "solidarity.svg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.921Z",
+    "modified_at": "2020-03-22T16:10:51.921Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 12,
+  "fields": {
+    "polymorphic_ctype": 15,
+    "folder": null,
+    "file": "filer_public/94/0d/940df508-0b39-42dd-bc7c-0a9be5192645/solidarity.jpg",
+    "_file_size": 144706,
+    "sha1": "17b745353cbccb4b768c779243af8056d23770a6",
+    "has_all_mandatory_data": false,
+    "original_filename": "solidarity.jpg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.924Z",
+    "modified_at": "2020-03-22T16:10:51.924Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 13,
+  "fields": {
+    "polymorphic_ctype": 15,
+    "folder": null,
+    "file": "filer_public/25/37/25376126-e33e-46ca-b2b4-ea124c279d48/gardener.jpg",
+    "_file_size": 447935,
+    "sha1": "9c5371598770e32eabd9cc325e55edf94364d0d1",
+    "has_all_mandatory_data": false,
+    "original_filename": "gardener.jpg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.929Z",
+    "modified_at": "2020-03-22T16:10:51.929Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.file",
+  "pk": 14,
+  "fields": {
+    "polymorphic_ctype": 15,
+    "folder": null,
+    "file": "filer_public/b4/38/b4382d2d-e863-4978-aeac-e00911122828/yoga.jpg",
+    "_file_size": 1007606,
+    "sha1": "f47aff1d213b5d847ff7844cbdf0c9b93d068c53",
+    "has_all_mandatory_data": false,
+    "original_filename": "yoga.jpg",
+    "name": "",
+    "description": null,
+    "owner": "b9fe4648-bd2b-4ff2-a88e-cb6e790f6bf9",
+    "uploaded_at": "2020-03-22T16:10:51.934Z",
+    "modified_at": "2020-03-22T16:10:51.934Z",
+    "is_public": true
+  }
+},
+{
+  "model": "filer.image",
+  "pk": 2,
+  "fields": {
+    "_height": 1500,
+    "_width": 1500,
+    "default_alt_text": null,
+    "default_caption": null,
+    "subject_location": "",
+    "date_taken": "2020-03-22T16:10:51.896Z",
+    "author": null,
+    "must_always_publish_author_credit": false,
+    "must_always_publish_copyright": false
+  }
+},
+{
+  "model": "filer.image",
+  "pk": 4,
+  "fields": {
+    "_height": 1500,
+    "_width": 1500,
+    "default_alt_text": null,
+    "default_caption": null,
+    "subject_location": "",
+    "date_taken": "2020-03-22T16:10:51.902Z",
+    "author": null,
+    "must_always_publish_author_credit": false,
+    "must_always_publish_copyright": false
+  }
+},
+{
+  "model": "filer.image",
+  "pk": 6,
+  "fields": {
+    "_height": 1500,
+    "_width": 1500,
+    "default_alt_text": null,
+    "default_caption": null,
+    "subject_location": "",
+    "date_taken": "2020-03-22T16:10:51.907Z",
+    "author": null,
+    "must_always_publish_author_credit": false,
+    "must_always_publish_copyright": false
+  }
+},
+{
+  "model": "filer.image",
+  "pk": 8,
+  "fields": {
+    "_height": 1500,
+    "_width": 1500,
+    "default_alt_text": null,
+    "default_caption": null,
+    "subject_location": "",
+    "date_taken": "2020-03-22T16:10:51.912Z",
+    "author": null,
+    "must_always_publish_author_credit": false,
+    "must_always_publish_copyright": false
+  }
+},
+{
+  "model": "filer.image",
+  "pk": 10,
+  "fields": {
+    "_height": 1500,
+    "_width": 1500,
+    "default_alt_text": null,
+    "default_caption": null,
+    "subject_location": "",
+    "date_taken": "2020-03-22T16:10:51.917Z",
+    "author": null,
+    "must_always_publish_author_credit": false,
+    "must_always_publish_copyright": false
+  }
+},
+{
+  "model": "filer.image",
+  "pk": 12,
+  "fields": {
+    "_height": 1500,
+    "_width": 1500,
+    "default_alt_text": null,
+    "default_caption": null,
+    "subject_location": "",
+    "date_taken": "2020-03-22T16:10:51.923Z",
+    "author": null,
+    "must_always_publish_author_credit": false,
+    "must_always_publish_copyright": false
+  }
+},
+{
+  "model": "filer.image",
+  "pk": 13,
+  "fields": {
+    "_height": 1500,
+    "_width": 2000,
+    "default_alt_text": null,
+    "default_caption": null,
+    "subject_location": "",
+    "date_taken": "2020-03-22T16:10:51.927Z",
+    "author": null,
+    "must_always_publish_author_credit": false,
+    "must_always_publish_copyright": false
+  }
+},
+{
+  "model": "filer.image",
+  "pk": 14,
+  "fields": {
+    "_height": 1500,
+    "_width": 2000,
+    "default_alt_text": null,
+    "default_caption": null,
+    "subject_location": "",
+    "date_taken": "2020-03-22T16:10:51.932Z",
+    "author": null,
+    "must_always_publish_author_credit": false,
+    "must_always_publish_copyright": false
   }
 }
 ]

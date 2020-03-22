@@ -10,6 +10,8 @@ class StoryTestCase(TestCase):
 
     def test_default_story(self):
         """Covers the intended use if the API in a narrative way."""
+        self.maxDiff = None
+
         # A new family / group of friends "registers" on the website to start
         # playing. They provide a name for their team and receive a user id and
         # an authentication token, which will be encoded in a URL they can used
@@ -21,17 +23,11 @@ class StoryTestCase(TestCase):
         # In order to add players, the client needs to know about available
         # attributes:
         attributes = self.get('/playerattributes/')
-        self.assertEqual(2, attributes['count'])
-        self.assertEqual([
-            {
-                'name': 'Haven of tranquility',
-                'url': 'http://testserver/playerattributes/1/',
-            },
-            {
-                'name': 'Need for movement',
-                'url': 'http://testserver/playerattributes/2/',
-            },
-        ], attributes['results'])
+        self.assertEqual(4, attributes['count'])
+        self.assertEqual({
+            'name': 'Sportskanone',
+            'url': 'http://testserver/playerattributes/1/',
+        } , attributes['results'][0])
 
         # The group consists of two players: Alice and Bob. For each player the
         # clients post its name and attributes:
@@ -51,23 +47,17 @@ class StoryTestCase(TestCase):
         # the analogue world.
         quests = self.get('/quests/')
         self.assertEqual(2, quests['count'])
-        self.assertEqual([
-            {
-                'url': 'http://testserver/quests/1/',
-                'category': 'http://testserver/questcategories/relationships/',
-                'title': 'Call a friend',
-                'text': '',
-                'flavor_text': '',
-                'score': 1,
-            },
-            {
-                'url': 'http://testserver/quests/2/',
-                'category': 'http://testserver/questcategories/health/',
-                'title': 'Run!',
-                'text': 'Go running for 20 minutes (alone).',
-                'flavor_text': '',
-                'score': 3,
-            }], quests['results'])
+        self.assertEqual({
+            'url': 'http://testserver/quests/1/',
+            'category': 'http://testserver/questcategories/chores/',
+            'title': 'Es war der Gärtner',
+            'text': ('Gieße heimlich alle eure Pflanzen. Gib dich erst als '
+                     'der geheime Gärtner zu erkennen,wenn es dir unendeckt '
+                     'gelungen ist.'),
+            'flavor_text': '',
+            'score': 3,
+            'image': 'http://testserver/media/filer_public/25/37/25376126-e33e-46ca-b2b4-ea124c279d48/gardener.jpg',
+        }, quests['results'][0])
 
     def get(self, url):
         response = self.client.get(url)
