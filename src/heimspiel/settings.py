@@ -136,6 +136,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/heimspiel/heimspiel-backend/src/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 THUMBNAIL_HIGH_RESOLUTION = True
 
 REST_FRAMEWORK = {
