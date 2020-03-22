@@ -23,7 +23,7 @@ from heimspiel_auth import views as auth_views
 from heimspiel_core import views
 
 router = routers.DefaultRouter()
-router.register(r'badges', views.QuestCategoryViewSet)
+router.register(r'badges', views.BadgeViewSet)
 router.register(r'playerattributes', views.PlayerAttributeViewSet)
 router.register(r'players', views.PlayerViewSet)
 router.register(r'questcategories', views.QuestCategoryViewSet)
