@@ -58,10 +58,10 @@ class Quest(models.Model):
         ordering = ['id']
 
 
-class QuestReport(models.Model):
+class ScoreReport(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
-    quests = models.ManyToManyField(Quest)
+    categories = models.ManyToManyField(QuestCategory)
 
     def __str__(self):
         return f"Report of {self.player} ({self.date})"
