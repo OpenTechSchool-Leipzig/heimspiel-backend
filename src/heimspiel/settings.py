@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'heimspiel',
     'heimspiel_auth',
     'heimspiel_core',
+    'heimspiel_sample',
 ]
 
 MIDDLEWARE = [
