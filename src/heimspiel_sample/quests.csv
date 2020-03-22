@@ -1,3 +1,6 @@
-title, category, text, flavor_text, score, image
-"Es war der Gärtner", chores, "Gieße heimlich alle eure Pflanzen. Gib dich erst als der geheime Gärtner zu erkennen, wenn es dir unendeckt gelungen ist.", "", 3, "gardener.jpg"
-"Yoga Guru", health, "Du bist die Sportskanone und schläfst in deiner Yoga Legging? Coache jemanden aus deinem Team für ein Yoga Training, geht auch via Skype. Für jede/n den/die du begeistern kannst,  mitzumachen, bekommt dein Team die Punktzahl auf der Karte.", "", 5, "yoga.jpg"
+title,category,text,flavor_text,score,image
+"Es war der Gärtner",chores,"Gieße heimlich alle eure Pflanzen. Gib dich erst als der geheime Gärtner zu erkennen, wenn es dir unendeckt gelungen ist.","",3,"gardener.jpg"
+"Regenbogen",chores,"Hängt zusammen eure Wäsche in den Farben des Regenbogens auf und macht ein tolles Foto von euch vor eurem Wäschebogen, das ihr mit euren Freunden teilt.","",3,"rainbow.jpg"
+"Yoga Guru",health,"Du bist die Sportskanone und schläfst in deiner Yoga Legging? Coache jemanden aus deinem Team für ein Yoga Training, geht auch via Skype. Für jede/n den/die du begeistern kannst, mitzumachen, bekommt dein Team die Punktzahl auf der Karte.","",4,"yoga.jpg"
+"Kletter-Krabel-Parcours",health,"Baut aus allem was ihr dafür findet einen Kindersport-Parcours durch die ganze Wohnung und absolviert ihn alle zusammen. Macht vielleicht ein kleines Video für eure Freunde.","",4,"parcours.jpg"
+"Geheimer Gefallen",solidarity,"Erweise heute jedem Mitglied deiner Familie einen Gefallen, ohne dass diese es bemerken. Decke deine Aufgaben auf, wenn alle Gefallen erfüllt sind.","",3,"favor.jpg"
