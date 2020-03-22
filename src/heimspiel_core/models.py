@@ -7,6 +7,9 @@ class PlayerAttribute(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['id']
+
 
 class Player(models.Model):
     name = models.CharField(max_length=64)
@@ -18,6 +21,9 @@ class Player(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['id']
+
 
 class QuestCategory(models.Model):
     id = models.CharField(primary_key=True, max_length=16)
@@ -26,6 +32,9 @@ class QuestCategory(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ['id']
 
 
 class Quest(models.Model):
@@ -39,6 +48,9 @@ class Quest(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['id']
+
 
 class QuestReport(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
@@ -48,6 +60,9 @@ class QuestReport(models.Model):
     def __str__(self):
         return f"Report of {self.player} ({self.date})"
 
+    class Meta:
+        ordering = ['date', 'id']
+
 
 class Badge(models.Model):
     name = models.CharField(max_length=64)
@@ -55,3 +70,6 @@ class Badge(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['id']
