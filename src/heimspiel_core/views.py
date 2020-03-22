@@ -1,6 +1,9 @@
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .models import Player, PlayerAttribute, Quest, QuestCategory, Badge
+from .score import UserScoreReportSerializer
 from .serializers import (
     PlayerSerializer, PlayerAttributeSerializer, QuestSerializer,
     QuestCategorySerializer, BadgeSerializer,
@@ -30,3 +33,22 @@ class QuestCategoryViewSet(viewsets.ModelViewSet):
 class BadgeViewSet(viewsets.ModelViewSet):
     serializer_class = BadgeSerializer
     queryset = Badge.objects.all()
+
+
+@api_view(['POST'])
+def score_reports(request):
+    report = UserScoreReportSerializer(data=request.data)
+    report.is_valid(raise_exception=True)
+    return Response({
+        'new_scores': {
+            'user': 0,
+            'players': [
+                { 'player': '', 'score': 0, },
+                { 'player': '', 'score': 0, },
+            ],
+        },
+        'earned_badges': {
+            'user': [],
+            'players': [],
+        },
+    }, status=201)

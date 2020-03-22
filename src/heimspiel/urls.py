@@ -33,4 +33,5 @@ router.register(r'users', auth_views.UserViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('scorereports/', views.score_reports),
 ] + static('media/', document_root=settings.MEDIA_ROOT)

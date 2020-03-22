@@ -1,3 +1,5 @@
+import json
+
 from django.test import Client, TestCase
 from rest_framework.authtoken.models import Token
 
@@ -59,12 +61,37 @@ class StoryTestCase(TestCase):
             'image': 'http://testserver/media/filer_public/25/37/25376126-e33e-46ca-b2b4-ea124c279d48/gardener.jpg',
         }, quests['results'][0])
 
+        # After a hard day of doing chores, the group returns and submits a
+        # score report to find out which badges they've earned:
+        result = self.post('/scorereports/', {
+            'user': user['url'],
+            'date': '2020-03-22T17:00:00Z',
+            'report': [
+                {
+                    'player': alice['url'],
+                    'category_scores': [
+                        { 'category': 'foo', 'score': 42 },
+                        { 'category': 'bar', 'score': 2 },
+                    ]
+                },
+                {
+                    'player': bob['url'],
+                    'category_scores': [
+                        { 'category': 'bar', 'score': 10 },
+                    ]
+                },
+            ],
+        })
+        self.assertEqual(54, result['new_scores']['user'])
+        self.assertEqual([], result['earned_badges']['user'])
+
     def get(self, url):
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
         return response.json()
 
     def post(self, url, data):
-        response = self.client.post(url, data)
+        response = self.client.post(url, json.dumps(data),
+                                    content_type='application/json')
         self.assertEqual(201, response.status_code)
         return response.json()
