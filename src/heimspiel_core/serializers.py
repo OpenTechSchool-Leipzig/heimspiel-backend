@@ -17,9 +17,19 @@ class PlayerAttributeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class QuestSerializer(serializers.HyperlinkedModelSerializer):
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = Quest
-        fields = ['url', 'title', 'category', 'text', 'flavor_text', 'score']
+        fields = ['url', 'title', 'category', 'text', 'flavor_text', 'score',
+                  'image']
+
+    def get_image(self, obj):
+        if obj.image is not None:
+            import pdb; pdb.set_trace()
+            return obj.image.url
+        else:
+            return None
 
 
 class QuestCategorySerializer(serializers.HyperlinkedModelSerializer):
