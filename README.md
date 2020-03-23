@@ -28,6 +28,10 @@ Backend technologies:
 
 The frontend code can be found [here](https://github.com/OpenTechSchool-Leipzig/heimspiel)
 
+## How to contribute
+
+We are happy if you would like to contribute. We have a bunch of [open issues](https://github.com/OpenTechSchool-Leipzig/heimspiel-backend/issues), please have a look and feel free to give it a try. If you have ideas or comments, we highly appreciate your input! Also, feel free to ask if you want to understand how a certain implementation works or if something is not clear to you. Simply comment on a certain issue or open a new one.
+
 ## Setup
 
 This project is built with Django Version 3.0.4. Please check if you have a Python version >= 3.6 installed.
