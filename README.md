@@ -30,4 +30,36 @@ The frontend code can be found [here](https://github.com/OpenTechSchool-Leipzig/
 
 ## Setup
 
+This project is built with Django Version 3.0.4. Please check if you have a Python version >= 3.6 installed.
+```console
+foo@bar:~$ python --version
+Python 3.7.2
+```
 
+Clone the repository:
+```console
+foo@bar:~$ git clone git@github.com:OpenTechSchool-Leipzig/heimspiel-backend.git
+```
+
+Setup a virtual environment:
+```console
+foo@bar:~$ python -m venv heimspiel-env
+```
+
+Install all requirements stored in the `setup.py`:
+```console
+foo@bar:~$ pip install .
+```
+
+Run migrations:
+```console
+foo@bar:~$ cd src/
+foo@bar:~$ python manage.py migrate
+```
+
+Start the development server
+```console
+foo@bar:~$ python manage.py runserver
+```
+
+Start coding :-)
