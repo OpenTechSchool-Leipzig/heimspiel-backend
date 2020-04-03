@@ -11,19 +11,19 @@ from heimspiel_core.models import Player, QuestCategory
 
 @dataclass
 class CategoryScoreReport:
-    category: str
+    category: QuestCategory
     score: int
 
 
 @dataclass
 class PlayerScoreReport:
-    player: str
+    player: Player
     category_scores: List[CategoryScoreReport]
 
 
 @dataclass
 class UserScoreReport:
-    user: str
+    user: User
     date: datetime
     report: List[PlayerScoreReport]
 
@@ -43,8 +43,6 @@ class PlayerScoreReportSerializer(serializers.Serializer):
 
 
 class UserScoreReportSerializer(serializers.Serializer):
-    user = serializers.HyperlinkedRelatedField(
-        queryset=User.objects.all(),
-        view_name='user-detail')
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     date = serializers.DateTimeField()
     report = PlayerScoreReportSerializer(many=True)

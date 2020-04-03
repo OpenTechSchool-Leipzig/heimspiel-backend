@@ -17,12 +17,21 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-from rest_framework import routers
+from rest_framework import permissions, routers
 
 from heimspiel_auth import views as auth_views
 from heimspiel_core import views
 
-router = routers.DefaultRouter()
+
+class APIRootView(routers.APIRootView):
+    permission_classes = [permissions.AllowAny]
+
+
+class DefaultRouter(routers.DefaultRouter):
+    APIRootView = APIRootView
+
+
+router = DefaultRouter()
 router.register(r'badges', views.BadgeViewSet)
 router.register(r'playerattributes', views.PlayerAttributeViewSet)
 router.register(r'players', views.PlayerViewSet)

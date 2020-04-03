@@ -1,4 +1,4 @@
-from rest_framework import serializers, viewsets
+from rest_framework import permissions, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -19,24 +19,28 @@ class PlayerViewSet(viewsets.ModelViewSet):
     queryset = Player.objects.all()
 
 
-class PlayerAttributeViewSet(viewsets.ModelViewSet):
+class PlayerAttributeViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PlayerAttributeSerializer
     queryset = PlayerAttribute.objects.all()
+    permission_classes = [permissions.AllowAny]
 
 
 class QuestViewSet(viewsets.ModelViewSet):
     serializer_class = QuestSerializer
     queryset = Quest.objects.all()
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-class QuestCategoryViewSet(viewsets.ModelViewSet):
+class QuestCategoryViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = QuestCategorySerializer
     queryset = QuestCategory.objects.all()
+    permission_classes = [permissions.AllowAny]
 
 
-class BadgeViewSet(viewsets.ModelViewSet):
+class BadgeViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = BadgeSerializer
     queryset = Badge.objects.all()
+    permission_classes = [permissions.AllowAny]
 
 
 @api_view(['POST'])
@@ -46,7 +50,6 @@ def score_reports(request):
     report.is_valid(raise_exception=True)
     report = report.validated_data
 
-    user = report['user']
     user_score = 0
     player_scores = []
 
