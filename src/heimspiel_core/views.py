@@ -4,13 +4,21 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
 from .models import (
-    Player, PlayerAttribute, Quest, QuestCategory, Badge, ScoreReport,
+    Player,
+    PlayerAttribute,
+    Quest,
+    QuestCategory,
+    Badge,
+    ScoreReport,
     QuestCategoryScoreReport,
 )
 from .score import UserScoreReportSerializer
 from .serializers import (
-    PlayerSerializer, PlayerAttributeSerializer, QuestSerializer,
-    QuestCategorySerializer, BadgeSerializer,
+    PlayerSerializer,
+    PlayerAttributeSerializer,
+    QuestSerializer,
+    QuestCategorySerializer,
+    BadgeSerializer,
 )
 
 
@@ -43,37 +51,36 @@ class BadgeViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 def score_reports(request):
-    report = UserScoreReportSerializer(
-        data=request.data, context={'request': request})
+    report = UserScoreReportSerializer(data=request.data, context={"request": request})
     report.is_valid(raise_exception=True)
     report = report.validated_data
 
     user_score = 0
     player_scores = []
 
-    for r in report['report']:
-        player = r['player']
-        sr = ScoreReport.objects.create(player=player, date=report['date'])
-        for c in r['category_scores']:
+    for r in report["report"]:
+        player = r["player"]
+        sr = ScoreReport.objects.create(player=player, date=report["date"])
+        for c in r["category_scores"]:
             QuestCategoryScoreReport.objects.create(
-                category=c['category'], report=sr, score=c['score'])
-            player.score += c['score']
+                category=c["category"], report=sr, score=c["score"]
+            )
+            player.score += c["score"]
         player.save()
-        player_scores.append({
-            'player': reverse('player-detail', args=[player], request=request),
-            'score': player.score,
-        })
+        player_scores.append(
+            {
+                "player": reverse("player-detail", args=[player], request=request),
+                "score": player.score,
+            }
+        )
         user_score += player.score
 
-    return Response({
-        'new_scores': {
-            'user': user_score,
-            'players': player_scores,
+    return Response(
+        {
+            "new_scores": {"user": user_score, "players": player_scores,},
+            "earned_badges": {"user": [], "players": [],},
         },
-        'earned_badges': {
-            'user': [],
-            'players': [],
-        },
-    }, status=201)
+        status=201,
+    )

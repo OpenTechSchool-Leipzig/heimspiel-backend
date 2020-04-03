@@ -7,19 +7,21 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('heimspiel_auth', '0001_initial'),
+        ("heimspiel_auth", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='name',
-            field=models.CharField(default='', max_length=64),
+            model_name="user",
+            name="name",
+            field=models.CharField(default="", max_length=64),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='user',
-            name='id',
-            field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
+            model_name="user",
+            name="id",
+            field=models.UUIDField(
+                default=uuid.uuid4, editable=False, primary_key=True, serialize=False
+            ),
         ),
     ]

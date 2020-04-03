@@ -12,7 +12,7 @@ class PlayerAttribute(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['id']
+        ordering = ["id"]
 
 
 class Player(models.Model):
@@ -27,19 +27,19 @@ class Player(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['id']
+        ordering = ["id"]
 
 
 class QuestCategory(models.Model):
     id = models.CharField(primary_key=True, max_length=16)
     title = models.CharField(max_length=64)
-    image = FilerImageField(on_delete=models.CASCADE, related_name='+')
+    image = FilerImageField(on_delete=models.CASCADE, related_name="+")
 
     def __str__(self):
         return self.title
 
     class Meta:
-        ordering = ['id']
+        ordering = ["id"]
 
 
 class Quest(models.Model):
@@ -48,27 +48,29 @@ class Quest(models.Model):
     text = models.TextField(blank=True)
     flavor_text = models.TextField(blank=True)
     score = models.IntegerField()
-    image = FilerImageField(null=True, blank=True,
-                            on_delete=models.SET_NULL, related_name='+')
+    image = FilerImageField(
+        null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
+    )
 
     def __str__(self):
         return self.title
 
     class Meta:
-        ordering = ['id']
+        ordering = ["id"]
 
 
 class ScoreReport(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     categories = models.ManyToManyField(
-        QuestCategory, through='QuestCategoryScoreReport')
+        QuestCategory, through="QuestCategoryScoreReport"
+    )
 
     def __str__(self):
         return f"Report of {self.player} ({self.date})"
 
     class Meta:
-        ordering = ['date', 'id']
+        ordering = ["date", "id"]
 
 
 class QuestCategoryScoreReport(models.Model):
@@ -87,4 +89,4 @@ class Badge(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['id']
+        ordering = ["id"]

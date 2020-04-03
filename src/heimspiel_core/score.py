@@ -30,15 +30,15 @@ class UserScoreReport:
 
 class CategoryScoreReportSerializer(serializers.Serializer):
     category = serializers.HyperlinkedRelatedField(
-        queryset=QuestCategory.objects.all(),
-        view_name='questcategory-detail')
+        queryset=QuestCategory.objects.all(), view_name="questcategory-detail"
+    )
     score = serializers.IntegerField()
 
 
 class PlayerScoreReportSerializer(serializers.Serializer):
     player = serializers.HyperlinkedRelatedField(
-        queryset=Player.objects.all(),
-        view_name='player-detail')
+        queryset=Player.objects.all(), view_name="player-detail"
+    )
     category_scores = CategoryScoreReportSerializer(many=True)
 
 

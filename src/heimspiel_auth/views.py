@@ -13,6 +13,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         response = super().create(request)
-        token = Token.objects.get(user_id=response.data['id'])
-        response.data['token'] = token.key
+        token = Token.objects.get(user_id=response.data["id"])
+        response.data["token"] = token.key
         return response

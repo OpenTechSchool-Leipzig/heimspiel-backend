@@ -14,102 +14,191 @@ class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.FILER_IMAGE_MODEL),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('filer', '0011_auto_20190418_0137'),
+        ("filer", "0011_auto_20190418_0137"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Player',
+            name="Player",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=64)),
-                ('score', models.PositiveIntegerField(default=0)),
-                ('background_story', models.TextField(blank=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=64)),
+                ("score", models.PositiveIntegerField(default=0)),
+                ("background_story", models.TextField(blank=True)),
             ],
-            options={
-                'ordering': ['id'],
-            },
+            options={"ordering": ["id"],},
         ),
         migrations.CreateModel(
-            name='PlayerAttribute',
+            name="PlayerAttribute",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=128)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=128)),
             ],
-            options={
-                'ordering': ['id'],
-            },
+            options={"ordering": ["id"],},
         ),
         migrations.CreateModel(
-            name='QuestCategory',
+            name="QuestCategory",
             fields=[
-                ('id', models.CharField(max_length=16, primary_key=True, serialize=False)),
-                ('title', models.CharField(max_length=64)),
-                ('image', filer.fields.image.FilerImageField(on_delete=django.db.models.deletion.CASCADE, related_name='+', to=settings.FILER_IMAGE_MODEL)),
+                (
+                    "id",
+                    models.CharField(max_length=16, primary_key=True, serialize=False),
+                ),
+                ("title", models.CharField(max_length=64)),
+                (
+                    "image",
+                    filer.fields.image.FilerImageField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to=settings.FILER_IMAGE_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['id'],
-            },
+            options={"ordering": ["id"],},
         ),
         migrations.CreateModel(
-            name='QuestCategoryScoreReport',
+            name="QuestCategoryScoreReport",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('score', models.PositiveIntegerField()),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='heimspiel_core.QuestCategory')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("score", models.PositiveIntegerField()),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="heimspiel_core.QuestCategory",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ScoreReport',
+            name="ScoreReport",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateTimeField(auto_now_add=True)),
-                ('categories', models.ManyToManyField(through='heimspiel_core.QuestCategoryScoreReport', to='heimspiel_core.QuestCategory')),
-                ('player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='heimspiel_core.Player')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "categories",
+                    models.ManyToManyField(
+                        through="heimspiel_core.QuestCategoryScoreReport",
+                        to="heimspiel_core.QuestCategory",
+                    ),
+                ),
+                (
+                    "player",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="heimspiel_core.Player",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['date', 'id'],
-            },
+            options={"ordering": ["date", "id"],},
         ),
         migrations.AddField(
-            model_name='questcategoryscorereport',
-            name='report',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='heimspiel_core.ScoreReport'),
+            model_name="questcategoryscorereport",
+            name="report",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="heimspiel_core.ScoreReport",
+            ),
         ),
         migrations.CreateModel(
-            name='Quest',
+            name="Quest",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=128)),
-                ('text', models.TextField(blank=True)),
-                ('flavor_text', models.TextField(blank=True)),
-                ('score', models.IntegerField()),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='heimspiel_core.QuestCategory')),
-                ('image', filer.fields.image.FilerImageField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to=settings.FILER_IMAGE_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=128)),
+                ("text", models.TextField(blank=True)),
+                ("flavor_text", models.TextField(blank=True)),
+                ("score", models.IntegerField()),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="heimspiel_core.QuestCategory",
+                    ),
+                ),
+                (
+                    "image",
+                    filer.fields.image.FilerImageField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to=settings.FILER_IMAGE_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['id'],
-            },
+            options={"ordering": ["id"],},
         ),
         migrations.AddField(
-            model_name='player',
-            name='attributes',
-            field=models.ManyToManyField(to='heimspiel_core.PlayerAttribute'),
+            model_name="player",
+            name="attributes",
+            field=models.ManyToManyField(to="heimspiel_core.PlayerAttribute"),
         ),
         migrations.AddField(
-            model_name='player',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="player",
+            name="user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.CreateModel(
-            name='Badge',
+            name="Badge",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=64)),
-                ('image', filer.fields.file.FilerFileField(on_delete=django.db.models.deletion.CASCADE, to='filer.File')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=64)),
+                (
+                    "image",
+                    filer.fields.file.FilerFileField(
+                        on_delete=django.db.models.deletion.CASCADE, to="filer.File"
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['id'],
-            },
+            options={"ordering": ["id"],},
         ),
     ]

@@ -4,10 +4,9 @@ from .models import Badge, Player, PlayerAttribute, Quest, QuestCategory
 
 
 class GetImageMixin:
-
     def get_image(self, obj):
         if obj.image is not None:
-            request = self.context['request']
+            request = self.context["request"]
             return request.build_absolute_uri(obj.image.url)
         else:
             return None
@@ -18,14 +17,13 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Player
-        fields = ['url', 'user', 'name', 'score', 'background_story',
-                  'attributes']
+        fields = ["url", "user", "name", "score", "background_story", "attributes"]
 
 
 class PlayerAttributeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PlayerAttribute
-        fields = ['url', 'name']
+        fields = ["url", "name"]
 
 
 class QuestSerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
@@ -33,17 +31,15 @@ class QuestSerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
 
     class Meta:
         model = Quest
-        fields = ['url', 'title', 'category', 'text', 'flavor_text', 'score',
-                  'image']
+        fields = ["url", "title", "category", "text", "flavor_text", "score", "image"]
 
 
-class QuestCategorySerializer(serializers.HyperlinkedModelSerializer,
-                              GetImageMixin):
+class QuestCategorySerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = QuestCategory
-        fields = ['url', 'title', 'image']
+        fields = ["url", "title", "image"]
 
 
 class BadgeSerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
@@ -51,4 +47,4 @@ class BadgeSerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
 
     class Meta:
         model = Badge
-        fields = ['url', 'name', 'image']
+        fields = ["url", "name", "image"]
