@@ -81,23 +81,36 @@ class StoryTestCase(TestCase):
                 {
                     'player': alice['url'],
                     'category_scores': [
-                        { 'category': categories['results'][0]['url'],
-                          'score': 42 },
-                        { 'category': categories['results'][3]['url'],
-                          'score': 2 },
+                        {'category': categories['results'][0]['url'],
+                         'score': 42},
+                        {'category': categories['results'][3]['url'],
+                         'score': 2},
                     ]
                 },
                 {
                     'player': bob['url'],
                     'category_scores': [
-                        { 'category': categories['results'][0]['url'],
-                          'score': 10 },
+                        {'category': categories['results'][0]['url'],
+                         'score': 10},
                     ]
                 },
             ],
         })
-        self.assertEqual(54, result['new_scores']['user'])
+        self.assertEqual({
+            'players': [
+                {'player': 'http://testserver/players/Alice/',
+                 'score': 44},
+                {'player': 'http://testserver/players/Bob/',
+                 'score': 10}],
+            'user': 54,
+        }, result['new_scores'])
         self.assertEqual([], result['earned_badges']['user'])
+
+        # Retrieving the players will also contain their updated scores:
+        alice = self.get(alice['url'])
+        self.assertEqual(44, alice['score'])
+        bob = self.get(bob['url'])
+        self.assertEqual(10, bob['score'])
 
     def get(self, url):
         response = self.client.get(url)
