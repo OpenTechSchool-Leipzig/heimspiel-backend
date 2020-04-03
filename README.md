@@ -52,7 +52,12 @@ foo@bar:~$ python -m venv heimspiel-env
 
 Install all requirements stored in the `setup.py`:
 ```console
-foo@bar:~$ pip install .
+foo@bar:~$ pip install .[test]
+```
+
+Verify that the tests are passing:
+```console
+make test
 ```
 
 Run migrations:

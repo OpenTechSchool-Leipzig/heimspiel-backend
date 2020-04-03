@@ -16,4 +16,8 @@ setup(
         'django-filer>=1.7.0',
         'djangorestframework>=3.11.0',
     ],
+
+    extras_require={
+        'test': ['black>=19.10b0'],
+    },
 )
