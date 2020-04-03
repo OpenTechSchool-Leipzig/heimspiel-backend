@@ -9,6 +9,7 @@ from .serializers import UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = [permissions.AllowAny]
 
     def create(self, request):
         response = super().create(request)
