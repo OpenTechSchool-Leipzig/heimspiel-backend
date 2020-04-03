@@ -11,19 +11,19 @@ from heimspiel_core.models import Player, QuestCategory
 
 @dataclass
 class CategoryScoreReport:
-    category: str
+    category: QuestCategory
     score: int
 
 
 @dataclass
 class PlayerScoreReport:
-    player: str
+    player: Player
     category_scores: List[CategoryScoreReport]
 
 
 @dataclass
 class UserScoreReport:
-    user: str
+    user: User
     date: datetime
     report: List[PlayerScoreReport]
 
