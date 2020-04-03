@@ -46,7 +46,6 @@ def score_reports(request):
     report.is_valid(raise_exception=True)
     report = report.validated_data
 
-    user = report['user']
     user_score = 0
     player_scores = []
 

@@ -1,14 +1,15 @@
 import json
 
-from django.test import Client, TestCase
+from django.test import TestCase
 from rest_framework.authtoken.models import Token
+from rest_framework.test import APIClient
 
 
 class StoryTestCase(TestCase):
     fixtures = ['sample-data.json']
 
     def setUp(self):
-        self.client = Client()
+        self.client = APIClient()
 
     def test_default_story(self):
         """Covers the intended use if the API in a narrative way."""
@@ -22,6 +23,9 @@ class StoryTestCase(TestCase):
         self.assertTrue('url' in user)
         self.assertTrue('token' in user)
 
+        # Set the Authorization header for future requests:
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + user['token'])
+
         # In order to add players, the client needs to know about available
         # attributes:
         attributes = self.get('/playerattributes/')
@@ -34,12 +38,10 @@ class StoryTestCase(TestCase):
         # The group consists of two players: Alice and Bob. For each player the
         # clients post its name and attributes:
         alice = self.post('/players/', {
-            'user': user['url'],
             'name': 'Alice',
             'attributes': [attributes['results'][0]['url']],
         })
         bob = self.post('/players/', {
-            'user': user['url'],
             'name': 'Bob',
             'attributes': [attributes['results'][1]['url']],
         })
@@ -74,7 +76,6 @@ class StoryTestCase(TestCase):
         }, categories['results'][0])
 
         result = self.post('/scorereports/', {
-            'user': user['url'],
             'date': '2020-03-22T17:00:00Z',
             'report': [
                 {

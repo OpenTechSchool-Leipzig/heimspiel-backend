@@ -43,8 +43,6 @@ class PlayerScoreReportSerializer(serializers.Serializer):
 
 
 class UserScoreReportSerializer(serializers.Serializer):
-    user = serializers.HyperlinkedRelatedField(
-        queryset=User.objects.all(),
-        view_name='user-detail')
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     date = serializers.DateTimeField()
     report = PlayerScoreReportSerializer(many=True)

@@ -14,6 +14,8 @@ class GetImageMixin:
 
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Player
         fields = ['url', 'user', 'name', 'score', 'background_story',
