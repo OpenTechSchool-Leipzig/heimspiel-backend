@@ -7,7 +7,10 @@ SECRET_KEY = os.getenv(
 )
 
 INSTALLED_APPS = [
+<<<<<<< 70a6ede451a3ef8111132658e7c53cbe51457347
 <<<<<<< 84952067c1d5665ee992e9a0a4e5bf59da449d20
+=======
+>>>>>>> Format black
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -18,12 +21,17 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "easy_thumbnails",
+<<<<<<< 70a6ede451a3ef8111132658e7c53cbe51457347
+=======
+    "drf_yasg",
+>>>>>>> Format black
     "filer",
     "mptt",
     "heimspiel",
     "heimspiel_auth",
     "heimspiel_core",
     "heimspiel_sample",
+<<<<<<< 70a6ede451a3ef8111132658e7c53cbe51457347
 =======
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +51,8 @@ INSTALLED_APPS = [
     'heimspiel_core',
     'heimspiel_sample',
 >>>>>>> Add drf-yasg
+=======
+>>>>>>> Format black
 ]
 
 MIDDLEWARE = [
