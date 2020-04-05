@@ -1,3 +1,5 @@
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -12,7 +14,7 @@ from .models import (
     ScoreReport,
     QuestCategoryScoreReport,
 )
-from .score import UserScoreReportSerializer
+from .score import UserScoreReportSerializer, ScoreReportResponseSerializer
 from .serializers import (
     PlayerSerializer,
     PlayerAttributeSerializer,
@@ -51,7 +53,14 @@ class BadgeViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
+<<<<<<< a08e5f79b7975dc1a403dcec22c359d6d479f0a3
 @api_view(["POST"])
+=======
+score_reports_response = openapi.Response("", ScoreReportResponseSerializer)
+
+@swagger_auto_schema(method="post", request_body=UserScoreReportSerializer, responses={201: score_reports_response})
+@api_view(["POST"])
+>>>>>>> Add score_reports to API docs
 def score_reports(request):
     report = UserScoreReportSerializer(data=request.data, context={"request": request})
     report.is_valid(raise_exception=True)

@@ -46,3 +46,18 @@ class UserScoreReportSerializer(serializers.Serializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     date = serializers.DateTimeField()
     report = PlayerScoreReportSerializer(many=True)
+
+
+class PlayerScoreResponseSerializer(serializers.Serializer):
+    player = serializers.URLField()
+    score = serializers.IntegerField()
+
+
+class NewScoresResponseSerializer(serializers.Serializer):
+    user = serializers.IntegerField()
+    players = PlayerScoreResponseSerializer(many=True)
+
+
+class ScoreReportResponseSerializer(serializers.Serializer):
+    new_scores = NewScoresResponseSerializer()
+    # TODO: Add badges
