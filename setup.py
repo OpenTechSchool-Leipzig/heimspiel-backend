@@ -13,6 +13,7 @@ setup(
         "django-cors-headers>=3.2.1",
         "django-filer>=1.7.0",
         "djangorestframework>=3.11.0",
+        "drf-yasg>=1.17.1", 
     ],
     extras_require={"test": ["black>=19.10b0"],},
 )
