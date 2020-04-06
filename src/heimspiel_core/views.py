@@ -53,18 +53,7 @@ class BadgeViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
-<<<<<<< 70a6ede451a3ef8111132658e7c53cbe51457347
-<<<<<<< a08e5f79b7975dc1a403dcec22c359d6d479f0a3
-@api_view(["POST"])
-=======
 score_reports_response = openapi.Response("", ScoreReportResponseSerializer)
-
-@swagger_auto_schema(method="post", request_body=UserScoreReportSerializer, responses={201: score_reports_response})
-@api_view(["POST"])
->>>>>>> Add score_reports to API docs
-=======
-score_reports_response = openapi.Response("", ScoreReportResponseSerializer)
-
 
 @swagger_auto_schema(
     method="post",
@@ -72,7 +61,6 @@ score_reports_response = openapi.Response("", ScoreReportResponseSerializer)
     responses={201: score_reports_response},
 )
 @api_view(["POST"])
->>>>>>> Format black
 def score_reports(request):
     report = UserScoreReportSerializer(data=request.data, context={"request": request})
     report.is_valid(raise_exception=True)
