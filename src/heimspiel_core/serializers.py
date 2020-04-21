@@ -12,39 +12,39 @@ class GetImageMixin:
             return None
 
 
-class PlayerSerializer(serializers.HyperlinkedModelSerializer):
+class PlayerSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Player
-        fields = ["url", "user", "name", "score", "background_story", "attributes"]
+        fields = ["id", "user", "name", "score", "background_story", "attributes"]
 
 
-class PlayerAttributeSerializer(serializers.HyperlinkedModelSerializer):
+class PlayerAttributeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlayerAttribute
-        fields = ["url", "name"]
+        fields = ["id", "name"]
 
 
-class QuestSerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
+class QuestSerializer(serializers.ModelSerializer, GetImageMixin):
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = Quest
-        fields = ["url", "title", "category", "text", "flavor_text", "score", "image"]
+        fields = ["id", "title", "category", "text", "flavor_text", "score", "image"]
 
 
-class QuestCategorySerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
+class QuestCategorySerializer(serializers.ModelSerializer, GetImageMixin):
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = QuestCategory
-        fields = ["url", "title", "image"]
+        fields = ["id", "title", "image"]
 
 
-class BadgeSerializer(serializers.HyperlinkedModelSerializer, GetImageMixin):
+class BadgeSerializer(serializers.ModelSerializer, GetImageMixin):
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = Badge
-        fields = ["url", "name", "image"]
+        fields = ["id", "name", "image"]

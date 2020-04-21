@@ -70,10 +70,7 @@ def score_reports(request):
             player.score += c["score"]
         player.save()
         player_scores.append(
-            {
-                "player": reverse("player-detail", args=[player], request=request),
-                "score": player.score,
-            }
+            {"player": player.id, "score": player.score,}
         )
         user_score += player.score
 

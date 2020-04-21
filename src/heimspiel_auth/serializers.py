@@ -6,10 +6,10 @@ from rest_framework.authtoken.models import Token
 from .models import User
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["url", "id", "name"]
+        fields = ["id", "name"]
 
     def create(self, validated_data):
         validated_data["id"] = uuid.uuid4()
