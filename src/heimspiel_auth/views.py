@@ -8,8 +8,10 @@ from .serializers import UserSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
-    queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        return User.objects.filter(id=self.request.user.id)
 
     def create(self, request):
         response = super().create(request)

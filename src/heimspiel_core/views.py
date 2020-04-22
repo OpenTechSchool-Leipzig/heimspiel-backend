@@ -24,7 +24,9 @@ from .serializers import (
 
 class PlayerViewSet(viewsets.ModelViewSet):
     serializer_class = PlayerSerializer
-    queryset = Player.objects.all()
+
+    def get_queryset(self):
+        return self.request.user.players.all()
 
 
 class PlayerAttributeViewSet(viewsets.ReadOnlyModelViewSet):

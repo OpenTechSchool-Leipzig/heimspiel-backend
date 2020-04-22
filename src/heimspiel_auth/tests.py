@@ -1,18 +1,15 @@
 import uuid
 from unittest.mock import patch
 
-from django.test import Client, TestCase
 from rest_framework.authtoken.models import Token
+from heimspiel_core.tests import APITestCase
 
 from .serializers import UserSerializer
 
 SAMPLE_UUID = uuid.uuid4()
 
 
-class AuthTestCase(TestCase):
-    def setUp(self):
-        self.client = Client()
-
+class AuthTestCase(APITestCase):
     @patch("uuid.uuid4", lambda: SAMPLE_UUID)
     def test_create_user(self):
         """Creates a user with a new UUID and an authentication token."""
@@ -29,9 +26,7 @@ class AuthTestCase(TestCase):
     def test_post_user_id_gets_ignored(self):
         """IDs are always generated server-side."""
         our_id = uuid.uuid4()
-        response = self.client.post("/users/", {"id": our_id, "name": "Heimspiel"})
-        self.assertEqual(response.status_code, 201)
-        body = response.json()
+        body = self.post("/users/", {"id": str(our_id), "name": "Heimspiel"})
         self.assertNotEqual(body["id"], our_id)
 
     def test_post_user_returns_token(self):
@@ -41,3 +36,23 @@ class AuthTestCase(TestCase):
         self.assertEqual(body["token"], token.key)
         # we manipulate the response's content, just to be sure:
         self.assertEqual(response["content-length"], str(len(response.content)))
+
+    def test_get_users_with_auth_returns_only_current_user(self):
+        self.post("/users/", {"name": "Alice"})
+        bob = self.post("/users/", {"name": "Bob"})
+        with self.auth_token(bob["token"]):
+            self.assertEquals(
+                {
+                    "count": 1,
+                    "next": None,
+                    "previous": None,
+                    "results": [{"id": str(bob["id"]), "name": "Bob"},],
+                },
+                self.get("/users/"),
+            )
+
+    def test_get_users_without_auth_returns_no_users(self):
+        self.assertEquals(
+            {"count": 0, "next": None, "previous": None, "results": [],},
+            self.get("/users/"),
+        )
