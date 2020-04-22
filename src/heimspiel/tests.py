@@ -1,15 +1,10 @@
-import json
-
-from django.test import TestCase
 from rest_framework.authtoken.models import Token
-from rest_framework.test import APIClient
+
+from heimspiel_core.tests import APITestCase
 
 
-class StoryTestCase(TestCase):
+class StoryTestCase(APITestCase):
     fixtures = ["sample-data.json"]
-
-    def setUp(self):
-        self.client = APIClient()
 
     def test_default_story(self):
         """Covers the intended use if the API in a narrative way."""
@@ -120,15 +115,3 @@ class StoryTestCase(TestCase):
         self.assertEqual(44, alice["score"])
         bob = self.get(f"/players/{bob['id']}/")
         self.assertEqual(10, bob["score"])
-
-    def get(self, url):
-        response = self.client.get(url)
-        self.assertEqual(200, response.status_code)
-        return response.json()
-
-    def post(self, url, data):
-        response = self.client.post(
-            url, json.dumps(data), content_type="application/json"
-        )
-        self.assertEqual(201, response.status_code)
-        return response.json()
