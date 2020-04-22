@@ -20,7 +20,7 @@ class Player(models.Model):
     name = models.CharField(max_length=64)
     score = models.PositiveIntegerField(default=0)
     background_story = models.TextField(blank=True)
-    attributes = models.ManyToManyField(PlayerAttribute)
+    attributes = models.ManyToManyField(PlayerAttribute, blank=True)
     # TODO: badges
 
     def __str__(self):
