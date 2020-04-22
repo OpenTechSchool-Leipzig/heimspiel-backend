@@ -1,4 +1,5 @@
 """Django settings for development"""
+from heimspiel.settings.base import *
 
 DEBUG = True
 
