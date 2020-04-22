@@ -18,8 +18,9 @@ class StoryTestCase(APITestCase):
         self.assertTrue("id" in user)
         self.assertTrue("token" in user)
 
-        # Set the Authorization header for future requests:
-        self.client.credentials(HTTP_AUTHORIZATION="Token " + user["token"])
+        # Set the authorization header for future requests:
+        #   Authorization: Token {TOKEN}
+        self.set_auth_token(user["token"])
 
         # In order to add players, the client needs to know about available
         # attributes:
