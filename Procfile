@@ -1,1 +1,1 @@
-web: gunicorn heimspiel.wsgi --log-file
+web: gunicorn heimspiel.wsgi --log-file -
