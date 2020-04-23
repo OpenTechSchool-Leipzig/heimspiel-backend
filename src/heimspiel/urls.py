@@ -34,10 +34,10 @@ class DefaultRouter(routers.DefaultRouter):
 router = DefaultRouter()
 router.register(r"badges", views.BadgeViewSet)
 router.register(r"playerattributes", views.PlayerAttributeViewSet)
-router.register(r"players", views.PlayerViewSet)
+router.register(r"players", views.PlayerViewSet, basename="player")
 router.register(r"questcategories", views.QuestCategoryViewSet)
 router.register(r"quests", views.QuestViewSet)
-router.register(r"users", auth_views.UserViewSet)
+router.register(r"users", auth_views.UserViewSet, basename="user")
 
 urlpatterns = [
     path("", include(router.urls)),
