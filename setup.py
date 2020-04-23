@@ -16,6 +16,7 @@ setup(
         "gunicorn==20.0.4",
         "dj-database-url==0.5.0",
         "psycopg2-binary==2.8.5",
+        "whitenoise==5.0.1",
     ],
     extras_require={"test": ["black>=19.10b0"],},
 )
